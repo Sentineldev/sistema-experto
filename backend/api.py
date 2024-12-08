@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from engine_instance import model
 from engine.constants import INPUT_NUM
 
+
 api = Blueprint("api",__name__,url_prefix="/api")
 
 

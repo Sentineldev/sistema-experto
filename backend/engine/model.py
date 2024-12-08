@@ -1,8 +1,7 @@
 import tensorflow as tf
 import numpy as np
-from engine.data import TRAINING_DATA, TARGET_DATA, TARGET_FILUM_DICT
-from engine.constants import EPOCHS, HIDDEN_NEURONS, INPUT_NUM, OUTPUT_NEURONS
-
+from data import TRAINING_DATA, TARGET_DATA, TARGET_FILUM_DICT
+from constants import EPOCHS, HIDDEN_NEURONS, INPUT_NUM, OUTPUT_NEURONS
 
 class FilumEdge:
     
