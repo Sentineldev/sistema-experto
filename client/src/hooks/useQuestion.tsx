@@ -33,7 +33,7 @@ function useQuestion(){
     }
 
     function postFinalAnswersValues(finalAnswersValues:number[] ){
-        const url = `${import.meta.env.URL_API}/${import.meta.env.KEY_STRING_RESULT}`
+        const url = `${import.meta.env.VITE_URL_API}/${import.meta.env.VITE_KEY_STRING_RESULT}`
         const data = {"answers": finalAnswersValues}      
         fetch(url, {
             method: "POST", 
@@ -42,7 +42,7 @@ function useQuestion(){
             "Content-Type": "application/json",
             },
         })
-            .then((res) => res.json())
+            .then((res) => res.text())
             .catch((error) => console.error("Error:", error))
             .then((response) => console.log("Success:", response));
         setAnswersValues(finalAnswersValues);
