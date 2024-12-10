@@ -40,6 +40,7 @@ type QuestionsFlowType = {
     };
 };
 
+export type ANSWERS_VALUES = Array<number | null>
 
 export const QUESTIONS_FLOW : QuestionsFlowType = {
     1: {

@@ -12,13 +12,13 @@
           <Avatar />
           <Questions message={question} />
           <div className="flex gap-10">
-            <button className="btn bg-red-700 w-16 hover:bg-red-900 h-16"
+            <button className="btn bg-red-700 w-20 hover:bg-red-900 h-16 text-white"
               onClick={() => addAnswerQuestion(0, indexQuestion, answersValues)}> 
-              No
+             {indexQuestion === 4? "Urticantes" : "No"}  
             </button>
-            <button className="btn bg-success w-16 hover:bg-green-800 h-16" 
+            <button className="btn bg-success w-20 hover:bg-green-800 h-16 text-white" 
               onClick={() => addAnswerQuestion(1, indexQuestion, answersValues)}>
-              Sí
+             {indexQuestion === 4? "Adhesivas" : "Si"} 
             </button>
           </div>
         </div>
