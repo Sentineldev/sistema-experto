@@ -1,5 +1,5 @@
 
-from model import FilumEdge
+from .model import FilumEdge
 
 
 def TrainModel(save = False):
@@ -9,9 +9,3 @@ def TrainModel(save = False):
     model.train()
     if save:
         model.save("modelo.keras")
-
-def main():
-    TrainModel()
-    
-if __name__ == "__main__":
-    main()
