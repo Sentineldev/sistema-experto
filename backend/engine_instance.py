@@ -1,6 +1,6 @@
 
-from engine.model import FilumEdge
 
+from engine.model import FilumEdge
 
 model = FilumEdge()
 

@@ -1,8 +1,7 @@
 import tensorflow as tf
 import numpy as np
-from engine.data import TRAINING_DATA, TARGET_DATA, TARGET_FILUM_DICT
-from engine.constants import EPOCHS, HIDDEN_NEURONS, INPUT_NUM, OUTPUT_NEURONS
-
+from common.data import TRAINING_DATA, TARGET_DATA, TARGET_FILUM_DICT
+from common.constants import EPOCHS, HIDDEN_NEURONS, INPUT_NUM, OUTPUT_NEURONS
 
 class FilumEdge:
     
@@ -29,12 +28,17 @@ class FilumEdge:
             tf.keras.layers.Dense(OUTPUT_NEURONS, activation="sigmoid"),
         ])
         self._compile()
-    def train(self):
+    def train(self, callback=None):
+        
+        callbacks = []
+        if callbacks is not None:
+            callbacks.append(callback)
+        
         if self._model is None:
             raise Exception("Model is not initialize or loaded")
         self._model.fit(TRAINING_DATA, TARGET_DATA, epochs=self._EPOCHS)
-        scores = model.evaluate(TRAINING_DATA, TARGET_DATA)
-        print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+        scores = self._model.evaluate(TRAINING_DATA, TARGET_DATA)
+        print("\n%s: %.2f%%" % (self._model.metrics_names[1], scores[1]*100))
 
         
     def predict(self, value: list[int]) -> list[float]:

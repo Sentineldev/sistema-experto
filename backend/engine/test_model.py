@@ -1,5 +1,5 @@
-from model import FilumEdge
-from data import TRAINING_DATA, TARGET_FILUM_DICT
+from .model import FilumEdge
+from common.data import TRAINING_DATA
 def TestModel():
     model = FilumEdge()
     model.load("modelo.keras")    
@@ -8,10 +8,3 @@ def TestModel():
         testCase = x.tolist()
         result = model.predictStrFormat(testCase)
         print(f"Resultado: {result}")
-        
-def main():
-    TestModel()
-
-if __name__ == "__main__":
-    main()
-    
