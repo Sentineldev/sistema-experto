@@ -1,15 +1,8 @@
 import tensorflow as tf
 import numpy as np
-from data import TRAINING_DATA, TARGET_DATA, TARGET_FILUM_DICT
-from constants import EPOCHS, HIDDEN_NEURONS, INPUT_NUM, OUTPUT_NEURONS
+from common.data import TRAINING_DATA, TARGET_DATA, TARGET_FILUM_DICT
+from common.constants import EPOCHS, HIDDEN_NEURONS, INPUT_NUM, OUTPUT_NEURONS
 
-# training_finished = False
-# class MyCallback(tf.keras.callbacks.Callback):
-#   def on_train_end(self, logs=None):
-#     global training_finished
-#     training_finished = True
-#     print("cuca")
-    
 class FilumEdge:
     
     def __init__(self):
@@ -43,7 +36,7 @@ class FilumEdge:
         
         if self._model is None:
             raise Exception("Model is not initialize or loaded")
-        self._model.fit(TRAINING_DATA, TARGET_DATA, epochs=self._EPOCHS, callbacks=callbacks)
+        self._model.fit(TRAINING_DATA, TARGET_DATA, epochs=self._EPOCHS)
         scores = self._model.evaluate(TRAINING_DATA, TARGET_DATA)
         print("\n%s: %.2f%%" % (self._model.metrics_names[1], scores[1]*100))
 

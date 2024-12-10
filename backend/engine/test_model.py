@@ -1,5 +1,5 @@
 from model import FilumEdge
-from data import TRAINING_DATA, TARGET_FILUM_DICT
+from common.data import TRAINING_DATA
 def TestModel():
     model = FilumEdge()
     model.load("modelo.keras")    
