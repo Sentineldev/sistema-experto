@@ -1,45 +1,49 @@
 import { useState } from "react";
-import { QUESTIONS, QUESTION_KEY, ANSWERS_TYPE, SUCCESS_COMBINATIONS, QUESTIONS_FLOW, ANSWERS_VALUES } from "../Consts/const";
+import { QUESTIONS, QUESTION_KEY, ANSWERS_TYPE, SUCCESS_COMBINATIONS, QUESTIONS_FLOW, ANSWERS_VALUES, URL_API, HISTORY } from "../Consts/const";
 
-
-function useQuestion(){
+function useQuestion() {
     const [indexQuestion, setIndexQuestion] = useState<QUESTION_KEY>(1);
     const [question, setQuestion] = useState(QUESTIONS[indexQuestion]);
     const [answerState, setAnswerState] = useState<ANSWERS_TYPE>(null);
-    const [answersValues, setAnswersValues] = useState<Array<number | null>>(Array(12).fill(null)); 
+    const [answersValues, setAnswersValues] = useState<ANSWERS_VALUES>(Array(12).fill(null));
+    const [history, setHistory] = useState<HISTORY>([]);
 
-    function addAnswerQuestion(answerState: ANSWERS_TYPE,indexQuestion: QUESTION_KEY, answersValues: Array<number | null>) {
+    function addAnswerQuestion(answerState: ANSWERS_TYPE, indexQuestion: QUESTION_KEY, answersValues: ANSWERS_VALUES) {
+        if (questionsDone(indexQuestion, answerState)) {
+            addAnswerToArray(answersValues, answerState, indexQuestion)
+            const updatedAnswersValues = [...answersValues]
+            const finalAnswersValues = fillArrayWithZeros(updatedAnswersValues);
+            postFinalAnswersValues(finalAnswersValues);
+            return;
+        }
+        
+        setHistory((prev) => [...prev, { indexQuestion, answerState, answersValues: [...answersValues] }]);
         setAnswerState(answerState);
         nextQuestion(answerState, indexQuestion, answersValues);
     }
-    
-    function addAnswerToArray(updateAnswersValues:ANSWERS_VALUES, answerState:ANSWERS_TYPE, indexQuestion: QUESTION_KEY){
-        answerState === 0 ? updateAnswersValues[indexQuestion-1] = 0 : updateAnswersValues[indexQuestion-1] = 1;
+
+    function addAnswerToArray(updateAnswersValues: ANSWERS_VALUES, answerState: ANSWERS_TYPE, indexQuestion: QUESTION_KEY) {
+        updateAnswersValues[indexQuestion - 1] = answerState;
     }
 
     function questionsDone(indexQuestion: QUESTION_KEY, answerState: ANSWERS_TYPE) {
         const newAnswerQuestion = [indexQuestion, answerState];
-        const isMatch = SUCCESS_COMBINATIONS.some((combination) =>
+        return SUCCESS_COMBINATIONS.some((combination) =>
             combination[0] === newAnswerQuestion[0] && combination[1] === newAnswerQuestion[1]
         );
-        return isMatch;
     }
 
-    function fillArrayWithZeros(updatedAnswersValues: ANSWERS_VALUES  ){
-        const finalAnswersValues = updatedAnswersValues.map((value) => 
-            value === null ? 0 : value
-        );
-        return finalAnswersValues
+    function fillArrayWithZeros(updatedAnswersValues: ANSWERS_VALUES) {
+        return updatedAnswersValues.map((value) => (value === null ? 0 : value));
     }
 
-    function postFinalAnswersValues(finalAnswersValues:number[] ){
-        const url = `${import.meta.env.VITE_URL_API}/${import.meta.env.VITE_KEY_STRING_RESULT}`
-        const data = {"answers": finalAnswersValues}      
-        fetch(url, {
-            method: "POST", 
-            body: JSON.stringify(data), 
+    function postFinalAnswersValues(finalAnswersValues: number[]) {
+        const data = { answers: finalAnswersValues };
+        fetch(URL_API, {
+            method: "POST",
+            body: JSON.stringify(data),
             headers: {
-            "Content-Type": "application/json",
+                "Content-Type": "application/json",
             },
         })
             .then((res) => res.text())
@@ -48,8 +52,8 @@ function useQuestion(){
         setAnswersValues(finalAnswersValues);
     }
 
-    function serchQuestionInArray(indexQuestion: QUESTION_KEY, answerState: ANSWERS_TYPE, updatedAnswersValues: ANSWERS_VALUES){
-        setAnswersValues(updatedAnswersValues);  
+    function serchQuestionInArray(indexQuestion: QUESTION_KEY, answerState: ANSWERS_TYPE, updatedAnswersValues: ANSWERS_VALUES) {
+        setAnswersValues(updatedAnswersValues);
         const key = indexQuestion;
         if (key in QUESTIONS_FLOW) {
             const values = QUESTIONS_FLOW[key];
@@ -63,19 +67,29 @@ function useQuestion(){
 
     function nextQuestion(answerState: ANSWERS_TYPE, indexQuestion: QUESTION_KEY, answersValues: ANSWERS_VALUES) {
         const updatedAnswersValues = [...answersValues];
-        addAnswerToArray(updatedAnswersValues, answerState, indexQuestion)
-        
+        addAnswerToArray(updatedAnswersValues, answerState, indexQuestion);
+
         if (questionsDone(indexQuestion, answerState)) {
-            const finalAnswersValues = fillArrayWithZeros(updatedAnswersValues)
-            postFinalAnswersValues(finalAnswersValues)
+            const finalAnswersValues = fillArrayWithZeros(updatedAnswersValues);
+            postFinalAnswersValues(finalAnswersValues);
             return;
-        } 
-        else {
-           serchQuestionInArray(indexQuestion, answerState, updatedAnswersValues)
+        } else {
+            serchQuestionInArray(indexQuestion, answerState, updatedAnswersValues);
         }
     }
-       
-    return {indexQuestion, question, answerState, answersValues, addAnswerQuestion}
+
+    function goBack() {
+        if (history.length > 0) {
+            const previousState = history[history.length - 1];
+            setHistory((prev) => prev.slice(0, -1));
+            setIndexQuestion(previousState.indexQuestion);
+            setQuestion(QUESTIONS[previousState.indexQuestion]);
+            setAnswerState(previousState.answerState);
+            setAnswersValues(previousState.answersValues);
+        }
+    }
+
+    return { indexQuestion, question, answerState, answersValues, addAnswerQuestion, goBack };
 }
 
-export default useQuestion; 
+export default useQuestion;
