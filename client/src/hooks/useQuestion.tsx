@@ -7,6 +7,7 @@ function useQuestion() {
     const [answerState, setAnswerState] = useState<ANSWERS_TYPE>(null);
     const [answersValues, setAnswersValues] = useState<ANSWERS_VALUES>(Array(12).fill(null));
     const [history, setHistory] = useState<HISTORY>([]);
+    const [filum, setFilum] = useState("");
 
     function addAnswerQuestion(answerState: ANSWERS_TYPE, indexQuestion: QUESTION_KEY, answersValues: ANSWERS_VALUES) {
         if (questionsDone(indexQuestion, answerState)) {
@@ -48,8 +49,12 @@ function useQuestion() {
         })
             .then((res) => res.text())
             .catch((error) => console.error("Error:", error))
-            .then((response) => console.log("Success:", response));
-        setAnswersValues(finalAnswersValues);
+            .then((response) => {console.log("Success:", response)
+                setFilum(response as string)
+            }
+               
+        );
+            
     }
 
     function serchQuestionInArray(indexQuestion: QUESTION_KEY, answerState: ANSWERS_TYPE, updatedAnswersValues: ANSWERS_VALUES) {
@@ -87,9 +92,25 @@ function useQuestion() {
             setAnswerState(previousState.answerState);
             setAnswersValues(previousState.answersValues);
         }
+        if(filum){
+            setFilum("")
+        }
     }
 
-    return { indexQuestion, question, answerState, answersValues, addAnswerQuestion, goBack };
+    function cleanFilum(){
+        setFilum("")
+    }
+
+    function clean(){
+        setIndexQuestion(1)
+        setQuestion(QUESTIONS[1])
+        setAnswerState(null)
+        setAnswersValues(Array(12).fill(null))
+        setHistory([])
+        setFilum("")
+    }
+
+    return { indexQuestion, question, answerState, answersValues, addAnswerQuestion, goBack, clean, cleanFilum,  filum};
 }
 
 export default useQuestion;
