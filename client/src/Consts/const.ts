@@ -1,3 +1,13 @@
+export const URL_API = `${import.meta.env.VITE_URL_API}/${import.meta.env.VITE_KEY_STRING_RESULT}`;
+export type QUESTION_KEY = keyof typeof QUESTIONS;
+export type  ANSWERS_TYPE = 0|1|null; 
+export type ANSWERS_VALUES = Array<number | null>
+export type HISTORY = {
+    indexQuestion: QUESTION_KEY;
+    answerState: ANSWERS_TYPE;
+    answersValues: ANSWERS_VALUES;
+  }[];
+  
 export const QUESTIONS = {
     1: "¿El organismo está formado por una sola célula?",
     2: "¿Observa alguna organización en capas o láminas de células que sugiera una estructura más compleja que un simple conjunto de células individuales?",
@@ -29,18 +39,12 @@ export const SUCCESS_COMBINATIONS = [
     [12,1]
 ]
 
-export type QUESTION_KEY = keyof typeof QUESTIONS;
-export type  ANSWERS_TYPE = 0|1|null; 
-
-
 type QuestionsFlowType = {
     [key: number]: {
         0: number | null;
         1: number | null;
     };
 };
-
-export type ANSWERS_VALUES = Array<number | null>
 
 export const QUESTIONS_FLOW : QuestionsFlowType = {
     1: {

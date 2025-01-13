@@ -1,14 +1,16 @@
 type PropsQuestion = {
-    message: string
+  message: string
 }
 
 
-function Questions({message}:PropsQuestion){
-    return(
-        <p className="bg-sky-800 text-white min-h-16 p-4 h-auto rounded-lg text-base w-96 ">
-            {message}
-        </p>
-    )
+function Questions({ message }: PropsQuestion) {
+  return (
+    <div className="h-full">
+      <h3 className=" text-gray-800 font-bold text-2xl ml-2">
+        {message}
+      </h3>
+    </div>
+  )
 }
 
 export default Questions;
