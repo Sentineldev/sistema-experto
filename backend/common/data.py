@@ -1,4 +1,9 @@
 import numpy as np
+
+"""
+
+Arreglo de datos con los casos de prueba que seran utilizados para entrenar el modelo.
+"""
 TRAINING_DATA = np.array([
     
     [1,0,0,0,0,0,0,0,0,0,0,0], #PROTOZUARIOS
@@ -45,6 +50,10 @@ TARGET_DATA = np.array([
     [0,0,0,0,0,0,0,0,0,0,0,0,1], # ANELIDO
 ])
 
+"""
+Arreglo de respuestas.
+
+"""
 TARGET_FILUM_DICT = {
     0: "PROTOZOARIO", 
     1: "PORIFEROS", 

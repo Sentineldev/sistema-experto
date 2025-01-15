@@ -5,8 +5,14 @@ from common.constants import INPUT_NUM
 api = Blueprint("api",__name__,url_prefix="/api")
 
 
+
 @api.route("/formated-result", methods=["POST"])
 def formated():
+
+    """
+    Endpoint para realizar una prediccion utilizando el modelo ya cargado.
+    Retorna una string que es el phylum resultante.
+    """
     body = request.json
     if "answers" not in body:   
         return "Wrong data structure answers must be provided", 422
@@ -26,6 +32,13 @@ def formated():
     return model.predictStrFormat(answers)
 @api.route("/raw-result", methods=["POST"])
 def raw():
+    """
+    Endpoint para realizar una prediccion utilizando el modelo ya cargado.
+    Retorna una lista de numeros flotantes con el porcentajer resultante de cada phylum.
+    el porcentaje mas alto es el phylum que tuvo mayor porcentaje de certeza.
+    """
+
+
     body = request.json
     if "answers" not in body:   
         return "Wrong data structure answers must be provided", 422
