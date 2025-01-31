@@ -11,7 +11,7 @@ import { GiCancel } from "react-icons/gi";
 import { GrPrevious } from "react-icons/gr";
 import { PiSpeakerSimpleHighFill } from "react-icons/pi";
 import { MdCleaningServices } from "react-icons/md";
-
+import { Pulser } from "./Components/Pulser/Pulser";
 
 
 function App() {
@@ -55,6 +55,7 @@ function App() {
                     <div>
                         {!filum ?
                             <div className="space-y-4 w-auto ml-4">
+                                <Pulser />
                                 <BaseButton onClick={() => addAnswerQuestion(0, indexQuestion, answersValues)}
                                     text={indexQuestion === 4 ? "Urticantes" : "No"} icon={<GiCancel className="w-4 h-4 text-gray-400" />} />
                                 <BaseButton onClick={() => addAnswerQuestion(1, indexQuestion, answersValues)}
