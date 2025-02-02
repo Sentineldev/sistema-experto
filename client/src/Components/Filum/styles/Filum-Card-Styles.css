@@ -1,0 +1,151 @@
+
+.card{
+  width: 50%;
+  height: 80% ;
+  border-radius: 10px;
+  position: relative;
+  background: #1c1f2b;
+  box-shadow: 5px 5ox 15px rgba(0,0,0,0.5);
+  z-index: 1;
+  animation: 2.7s fade-down ease-in-out forwards;  
+}
+
+.wallpaper{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  position: absolute;
+  transition-duration: 0.5s;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+
+.box-area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  opacity: 0; 
+  position: absolute;
+  transform: translateY(0px); 
+  transition: opacity 0.5s ease, transform 0.5s ease; 
+  border-radius: 10px;
+}
+
+.box-area h3{
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  position: absolute;
+  transition-duration: 0.5s;
+  overflow: hidden;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+
+@property --angle{
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card::after, .card::before {
+  content: '';
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%; 
+  width: 100%;
+  border-radius: 10px;
+  z-index: -1; 
+  padding: 4px;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  animation: 6s rotate ease-in-out infinite;
+  
+
+}
+
+.card:hover .box-area {
+  opacity: 1; 
+  transform: translateY(0);
+}
+
+.card:hover .overlay {
+  height: 100%; 
+}
+
+.card:hover img{
+  transform: scale(1.1);
+}
+
+.overlay {
+  width: 100%;
+  height: 0; 
+  background: linear-gradient(transparent, #1c1c1c 58%);
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  font-size: 14px;
+  transition: height 0.5s ease; 
+}
+
+.card::before{
+  filter: blur(1.5rem);
+  opacity: .7; 
+  border-radius: 10px;
+}
+
+
+
+@keyframes rotate{
+  from{
+    --angle: 0deg;
+
+  }
+
+  to{
+    --angle: 360deg;
+    
+  }
+}
+
+@keyframes overlay-up{
+  from{
+    
+    transform: translateY(200px);
+  }
+  to{
+    
+    transform: translateY(150px);
+
+  }
+}
+
+
+@keyframes fade-down{
+  from{
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}

@@ -1,24 +1,24 @@
-import { ReactNode } from "react"
+import "./styles/Filum-Card-Styles.css"
 
-interface PropsFilum{
-    nameFilum: string,
-    id: string,
-    children: ReactNode
+
+interface PropsFilum {
+  nameFilum: string;
+  image: string;
+  description: string;
 }
 
-export function Filum({nameFilum, id, children}:PropsFilum){
-    return(
-      <dialog id={id} className="modal">
-        <div className="modal-box">
-          <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-          </form>
-          <div className="flex justify-center mb-2">
-            {children}
-          </div>
-          <h3 className="font-bold text-xl">¡El filum del organismo es:"{nameFilum}!</h3>
+export function Filum({ nameFilum, image, description }: PropsFilum) {
+  return (
+    <div className="card">
+      <div className="wallpaper">
+        <img src={image} alt="Una imagen" />
+      </div>
+      <div className="box-area">
+        <div className="overlay">
+          <h3>{nameFilum}</h3>
+          <p>{description}</p>
         </div>
-      </dialog>
-    
-    )
+      </div>
+    </div>
+  );
 }
