@@ -64,7 +64,7 @@ function App() {
                 </div>
                 <div className="w-full h-[58%] flex flex-col rounded-b-lg" style={{ background: "linear-gradient(45deg, rgba(244,244,244,1) 0%, rgba(177,177,177,1) 17%, rgba(189,189,189,1) 39%, rgba(235,235,235,1) 68%)" }}>
 
-                    <div className="flex items-center justify-around ">
+                    <div className="flex items-center justify-around mt-3">
                         {(indexQuestion > 1 && !filum) && <PreviousButton text="Anterior" icon={<GrPrevious className="mr-2" />} onClick={goBack} />}
                         {(filum) && <PreviousButton text="Anterior" icon={<GrPrevious className="mr-2" />} onClick={cleanFilum} />}
                         {(filum) && <Pulser />}
@@ -88,7 +88,7 @@ function App() {
                             <div className="mt-2 flex flex-col items-center gap-2 h-full">
                                 <Filum nameFilum={filum} description={filumValue.descripcion} image={filumValue.imagen} />
 
-                                <div className="flex flex-col items-center gap-2">
+                                <div className="flex flex-col items-center gap-2 mt-2 mb-4">
                                     <BaseButton onClick={clean} text="VOLVER AL INICIO" icon={<MdCleaningServices />} />
                                 </div>
                             </div>
