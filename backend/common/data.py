@@ -55,19 +55,19 @@ Arreglo de respuestas.
 
 """
 TARGET_FILUM_DICT = {
-    0: "PROTOZOARIO", 
+    0: "PROTOZOARIOS", 
     1: "PORIFEROS", 
     2: "CNIDARIOS", 
     3: "CTENÓFOROS", 
-    4: "NEMERTINO",
-    5: "PLANTELMINTO", 
-    6: "ACOTACEFALOS", 
+    4: "NEMERTINOS",
+    5: "PLATELMINTOS", 
+    6: "ACANTOCÉFALOS", 
     7: "ASQUELMINTOS", 
-    8: "cordado", 
-    9: "EQUINODERMO",
-    10: "ARTROPODO", 
-    11: "MOLUSCO", 
-    12: "ANELIDO"
+    8: "CORDADOS", 
+    9: "EQUINODERMOS",
+    10: "ARTROPODOS", 
+    11: "MOLUSCOS", 
+    12: "ANELIDOS"
 }
 
 
