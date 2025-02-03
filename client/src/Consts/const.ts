@@ -14,7 +14,7 @@ export type FILUMS_KEY = keyof typeof FILUMS_RESPONSE;
 
 
 export const FILUMS_RESPONSE = {
-    PROTOZOARIO: {
+    PROTOZOARIOS: {
         descripcion: "El filum protozoo es un grupo de organismos unicelulares, microscópicos y eucariotas que viven en ambientes húmedos o en agua. Pueden ser de vida libre o parásitos de otros seres vivos.",
         imagen: "https://as1.ftcdn.net/v2/jpg/01/71/13/58/1000_F_171135886_DRvnkil2ry1pf7NFLouqDZrFOHJlCcfF.jpg"
     },
@@ -30,15 +30,15 @@ export const FILUMS_RESPONSE = {
         descripcion: "El Filo Ctenophora, conocidos comúnmente como ctenóforos o peines de mar, son animales marinos que se caracterizan por tener ocho filas de placas ciliadas o 'peines' que utilizan para nadar. Aunque superficialmente se parecen a las medusas, pertenecen a un filo distinto con características únicas.",
         imagen: "https://as1.ftcdn.net/v2/jpg/02/01/44/32/1000_F_201443209_mHbpUbNr0rhxetontyuUKVGRR94syc8a.jpg"
     },
-    NEMERTINO: {
+    NEMERTINOS: {
         descripcion: "El Filo Nemertea, conocidos comúnmente como nemertinos o gusanos cordón de bota, son un grupo de gusanos marinos no segmentados que se caracterizan por tener una probóscide o trompa extensible que utilizan para capturar presas.",
         imagen: "https://images.theconversation.com/files/554821/original/file-20231019-15-eoou94.jpg?ixlib=rb-1.1.0&rect=67%2C34%2C1210%2C817&q=45&auto=format&w=1000&fit=clip"
     },
-    PLANTELMINTO: {
+    PLATELMINTOS: {
         descripcion: "Los platelmintos son un grupo diverso de animales invertebrados que se caracterizan por tener un cuerpo plano y blando, sin segmentar. A diferencia de otros gusanos, como los anélidos o los nematodos, los platelmintos no tienen celoma ni sistema circulatorio.",
         imagen: "https://inaturalist-open-data.s3.amazonaws.com/photos/4466/original.jpg"
     },
-    ACOTACEFALOS: {
+    ACANTOCÉFALOS: {
         descripcion: "El Filo Acanthocephala, conocidos comúnmente como acantocéfalos o gusanos de cabeza espinosa, son un grupo de gusanos parásitos que se caracterizan por tener una probóscide o trompa retráctil con espinas.",
         imagen: "https://previews.123rf.com/images/sinhyu/sinhyu1903/sinhyu190300090/119353794-el-estudio-de-acanthocephala-es-un-filo-de-gusanos-par%C3%A1sitos-conocidos-como-acantoc%C3%A9falos-gusanos.jpg"
     },
@@ -46,23 +46,23 @@ export const FILUMS_RESPONSE = {
         descripcion: "El término asquelmintos es un concepto taxonómico que actualmente se considera obsoleto. Anteriormente, se utilizaba para agrupar a diversos filos de gusanos que compartían ciertas características.",
         imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Soybean_cyst_nematode_and_egg_SEM.jpg/1280px-Soybean_cyst_nematode_and_egg_SEM.jpg"
     },
-    cordado: {
+    CORDADOS: {
         descripcion: "Es un grupo muy diverso de animales que incluye a todos los vertebrados (peces, anfibios, reptiles, aves y mamíferos), así como a otros grupos de invertebrados marinos conocidos como urocordados (tunicados) y cefalocordados (anfioxos).",
         imagen: "https://c4.wallpaperflare.com/wallpaper/343/589/117/animal-red-panda-fall-wildlife-hd-wallpaper-preview.jpg"
     },
-    EQUINODERMO: {
+    EQUINODERMOS: {
         descripcion: "El Filo Echinodermata, conocidos comúnmente como equinodermos, es un grupo de animales marinos exclusivamente que incluye estrellas de mar, erizos de mar, pepinos de mar, ofiuros y lirios de mar.",
         imagen: "https://c4.wallpaperflare.com/wallpaper/879/671/755/animales-de-estrella-mar-wallpaper-preview.jpg"
     },
-    ARTROPODO: {
+    ARTROPODOS: {
         descripcion: "El Filo Arthropoda es el grupo más diverso y abundante del reino animal, representando aproximadamente el 80% de todas las especies conocidas. Los artrópodos son animales invertebrados que se caracterizan por tener un cuerpo segmentado, apéndices articulados y un exoesqueleto duro.",
         imagen: "https://preview.redd.it/73pfa37f7vi11.jpg?width=1080&crop=smart&auto=webp&s=04b2cd5cb42362f37ac08bda6c0aade556de9f9d"
     },
-    MOLUSCO: {
+    MOLUSCOS: {
         descripcion: "El Filo Mollusca es un grupo extremadamente diverso de animales invertebrados que incluye una gran variedad de formas, tamaños y estilos de vida. Se caracterizan por tener un cuerpo blando, a menudo protegido por una concha calcárea, y un pie muscular que utilizan para desplazarse.",
         imagen: "https://c4.wallpaperflare.com/wallpaper/370/921/307/animales-mar-molusco-pulpo-wallpaper-preview.jpg"
     },
-    ANELIDO: {
+    ANELIDOS: {
         descripcion: "El Filo Annelida, conocidos comúnmente como anélidos o gusanos segmentados, es un grupo diverso de animales invertebrados que se caracterizan por tener el cuerpo segmentado en anillos o metámeros.",
         imagen: "https://preview.free3d.com/img/2023/06/3191675229613065824/rux8luy9.jpg"
     }
