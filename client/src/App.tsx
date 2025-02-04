@@ -62,7 +62,7 @@ function App() {
                     <Avatar isSpeaking={isSpeaking} />
                     <h2 className="mt-4 text-xl font-bold text-white  ml-4">  Pregunta: {indexQuestion}</h2>
                 </div>
-                <div className="w-full h-[58%] flex flex-col rounded-b-lg" style={{ background: "linear-gradient(45deg, rgba(244,244,244,1) 0%, rgba(177,177,177,1) 17%, rgba(189,189,189,1) 39%, rgba(235,235,235,1) 68%)" }}>
+                <div className="w-full h-[58%] flex gap-6 flex-col rounded-b-lg" style={{ background: "linear-gradient(45deg, rgba(244,244,244,1) 0%, rgba(177,177,177,1) 17%, rgba(189,189,189,1) 39%, rgba(235,235,235,1) 68%)" }}>
 
                     <div className="flex items-center justify-around mt-3">
                         {(indexQuestion > 1 && !filum) && <PreviousButton text="Anterior" icon={<GrPrevious className="mr-2" />} onClick={goBack} />}
