@@ -11,7 +11,7 @@ def create_app():
     app = Flask(__name__, static_folder="build")
     CORS(app)
 
-
+    
     @app.route("/")
     def serve_index():
         return send_from_directory(app.static_folder, "index.html")
